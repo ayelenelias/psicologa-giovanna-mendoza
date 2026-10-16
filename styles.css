@@ -1,0 +1,1209 @@
+/* ==========================================================================
+   Psicóloga Giovanna Mendoza (M.P. 4777)
+   Design System inspirado en estiloweb.jpg:
+   - Estética retro-editorial, suave, cálida y terapéutica
+   - Paleta: Sky clouds, Sage green (#9FC19E), Periwinkle (#94A4C8), Warm Cream (#FAF9F5)
+   - Tipografía: Outfit (display redondeado bold) + Plus Jakarta Sans
+   - Hero con retrato oval / cápsula, starburst flotante, onda orgánica y sección split
+   ========================================================================== */
+
+:root {
+  /* Paleta Principal Extraída de estiloweb.jpg */
+  --color-sky-tint: #8EA49D;
+  --color-sky-overlay: rgba(135, 159, 151, 0.45);
+  --color-sage: #9FC19E;
+  --color-sage-dark: #3F7567;
+  --color-sage-light: #E7EFE6;
+  --color-sage-border: #BCD4BB;
+  --color-periwinkle: #94A4C8;
+  --color-periwinkle-dark: #7F91B8;
+  --color-periwinkle-light: #EBF0F9;
+  --color-cream: #FAF9F5;
+  --color-cream-card: #FFFFFF;
+  --color-cream-border: #E8E5DD;
+  --color-sand: #F3EFE6;
+  
+  /* Textos y contrastes */
+  --color-text-main: #24352F;
+  --color-text-muted: #596B64;
+  --color-text-light: #83948D;
+  --color-text-white: #FFFFFF;
+
+  /* WhatsApp */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20BA5A;
+
+  /* Tipografías */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Bordes & Curvaturas */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-pill: 9999px;
+  --radius-oval: 50% / 40%;
+
+  /* Sombras suaves */
+  --shadow-sm: 0 4px 12px rgba(36, 53, 47, 0.05);
+  --shadow-md: 0 10px 25px rgba(36, 53, 47, 0.08);
+  --shadow-lg: 0 20px 45px rgba(36, 53, 47, 0.12);
+  --shadow-oval: 0 22px 50px rgba(36, 53, 47, 0.18);
+
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --container-width: 1140px;
+}
+
+/* ==========================================================================
+   RESET & BASICS
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-text-main);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   BOTONES Y ELEMENTOS PILL (Estilo estiloweb.jpg)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-periwinkle {
+  background-color: var(--color-periwinkle);
+  color: #FFFFFF;
+}
+
+.btn-periwinkle:hover {
+  background-color: var(--color-periwinkle-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: #FFFFFF;
+}
+
+.btn-white {
+  background-color: #FFFFFF;
+  color: var(--color-periwinkle-dark);
+}
+
+.btn-white:hover {
+  background-color: var(--color-sand);
+  color: var(--color-text-main);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #FFFFFF;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline-white:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   HEADER / NAVBAR MINIMALISTA
+   ========================================================================== */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.25rem 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.brand-matricula {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+}
+
+.header-contact-btn {
+  padding: 0.55rem 1.3rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-sage-dark);
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-contact-btn:hover {
+  background-color: #FFFFFF;
+  color: var(--color-text-main);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   1. HERO SECTION (ESTILO EXACTO DE estiloweb.jpg)
+   - Parte superior: Fondo vintage clouds con la palabra "Claridad"
+   - Retrato central: Marco oval/cápsula con gio.jfif
+   - Starburst decorativo blanco a la izquierda
+   - Bloque verde Salvia (#9FC19E) que recibe el retrato
+   - Titulares blancos redondeados y onda suave
+   ========================================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cielo Vintage Superior */
+.hero-sky-block {
+  position: relative;
+  min-height: 380px;
+  background-image: 
+    linear-gradient(to bottom, rgba(135, 159, 151, 0.55) 0%, rgba(135, 159, 151, 0.3) 70%, rgba(159, 193, 158, 0.9) 100%),
+    url('assets/images/cielo-clouds.jpg');
+  background-position: center 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5.5rem;
+  text-align: center;
+}
+
+/* Palabra "Claridad" estilo "Clarity" */
+.hero-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9vw, 6.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  text-shadow: 0 4px 20px rgba(36, 53, 47, 0.12);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+/* Contenedor relativo para el Retrato Oval y el Starburst */
+.hero-portrait-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Marco Oval / Cápsula del Retrato de Giovanna */
+.hero-oval-frame {
+  width: clamp(240px, 32vw, 320px);
+  aspect-ratio: 1 / 1.35;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 5px solid #FFFFFF;
+  box-shadow: var(--shadow-oval);
+  background-color: #EFECE6;
+  margin-bottom: -110px; /* Hace que el óvalo penetre en la sección verde */
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.hero-oval-frame:hover {
+  transform: translateY(-4px);
+}
+
+.hero-oval-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1.02);
+  transition: transform 0.6s ease;
+}
+
+.hero-oval-frame:hover img {
+  transform: scale(1.06);
+}
+
+/* Bloque Verde Salvia (#9FC19E) */
+.hero-sage-block {
+  background-color: var(--color-sage);
+  padding: 8.5rem 1.5rem 4rem; /* Padding superior para el óvalo superpuesto */
+  text-align: center;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.hero-sage-inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.hero-kicker {
+  font-family: var(--font-display);
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.hero-sage-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+}
+
+.hero-cta-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.hero-trust-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Onda Curva Orgánica Inferior */
+.hero-wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background-color: var(--color-sage);
+}
+
+.hero-wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+.hero-wave-divider path {
+  fill: var(--color-cream);
+}
+
+/* ==========================================================================
+   2. SECCIÓN "SOY GIOVANNA" (Inspirada en "I'm Maeve")
+   - Tipografía color turquesa / sage oscuro
+   - Squiggle wavy line decorativa
+   - Párrafo conciso y botón periwinkle
+   - Tarjeta derecha con credenciales limpias y quote
+   ========================================================================== */
+.about-maeve-section {
+  padding: 5rem 0 6rem;
+  background-color: var(--color-cream);
+}
+
+.about-maeve-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4.5rem;
+}
+
+.about-maeve-content {
+  text-align: left;
+}
+
+.about-maeve-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--color-sage-dark);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+
+/* Wavy squiggle line */
+.about-wavy-line {
+  width: 120px;
+  height: 16px;
+  color: var(--color-sage-dark);
+  margin-bottom: 1.5rem;
+}
+
+.about-maeve-text {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.about-maeve-text strong {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.about-maeve-btn {
+  margin-top: 1rem;
+}
+
+/* Tarjeta derecha estética de credenciales (sin fotos de consultorio) */
+.about-badge-card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-cream-border);
+  padding: 2.75rem 2.25rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.about-badge-card::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1px dashed var(--color-sage-border);
+  border-radius: calc(var(--radius-lg) - 8px);
+  pointer-events: none;
+}
+
+.badge-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.badge-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 0.25rem;
+}
+
+.badge-card-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-sage-dark);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.badge-card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.badge-card-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.badge-card-list li span.bullet {
+  color: var(--color-sage-dark);
+  font-weight: 700;
+}
+
+.badge-card-quote {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-sand);
+  padding-top: 1.25rem;
+}
+
+/* ==========================================================================
+   3. SECCIÓN SPLIT: OCÉANO AL ATARDECER + BLOQUE PERIWINKLE (#94A4C8)
+   (Inspirada en "A grounded, collaborative approach to therapy")
+   ========================================================================== */
+.split-approach-section {
+  background-color: var(--color-cream);
+  padding: 2rem 0 6rem;
+}
+
+.split-approach-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.split-approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Columna Izquierda: Foto Océano al Atardecer */
+.split-image-col {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background-color: #B5BFCE;
+}
+
+.split-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.split-approach-grid:hover .split-image-col img {
+  transform: scale(1.03);
+}
+
+/* Columna Derecha: Bloque Periwinkle (#94A4C8) */
+.split-content-col {
+  background-color: var(--color-periwinkle);
+  color: #FFFFFF;
+  padding: 4.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.split-kicker {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.2rem;
+}
+
+.split-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  margin-bottom: 1.75rem;
+}
+
+.split-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 1.25rem;
+}
+
+.split-btn {
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+/* ==========================================================================
+   4. SECCIÓN SERVICIOS: 3 COLUMNAS CON FLORES (estiloweb.jpg)
+   - Flor de 5 pétalos color salvia (#9FC19E)
+   - Títulos redondeados y descripciones concisas
+   - Botón pill periwinkle "CONSULTAR"
+   ========================================================================== */
+.services-trio-section {
+  padding: 6rem 0;
+  background-color: var(--color-cream);
+  text-align: center;
+}
+
+.services-trio-header {
+  max-width: 650px;
+  margin: 0 auto 4rem;
+}
+
+.section-tag-pill {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-sage-dark);
+  background-color: var(--color-sage-light);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.section-title-retro {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 1.25;
+}
+
+.services-trio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.service-trio-card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-cream-border);
+  padding: 3rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.service-trio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-sage-border);
+}
+
+
+
+.service-trio-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.service-trio-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.service-trio-btn {
+  width: 100%;
+  max-width: 190px;
+  font-size: 0.85rem;
+  padding: 0.75rem 1.25rem;
+}
+
+/* ==========================================================================
+   5. EMPATÍA & MOTIVOS DE CONSULTA (CONCISO Y CÁLIDO)
+   ========================================================================== */
+.empathy-retro-section {
+  padding: 5rem 0;
+  background-color: #F4F1EA;
+}
+
+.pain-grid-retro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.pain-card-retro {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--color-cream-border);
+  transition: var(--transition);
+}
+
+.pain-card-retro:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.pain-card-retro-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.pain-card-retro h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 0.5rem;
+}
+
+.pain-card-retro p {
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   6. PAUSA DE CALMA: RESPIRACIÓN 4-4-4
+   ========================================================================== */
+.breathing-retro-section {
+  padding: 5rem 0;
+  background-color: var(--color-cream);
+}
+
+.breathing-retro-box {
+  max-width: 680px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  border: 1px solid var(--color-cream-border);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.breathing-circle-container {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breathing-circle {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-sage-light) 0%, #D4E5D3 100%);
+  border: 3px solid var(--color-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-sage-dark);
+  transition: transform 4s ease-in-out;
+}
+
+.breathing-circle.inhale, .breathing-circle.hold {
+  transform: scale(1.6);
+}
+
+.breathing-circle.exhale {
+  transform: scale(1.0);
+}
+
+.breathing-state-text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-sage-dark);
+  min-height: 2rem;
+  margin-bottom: 0.35rem;
+}
+
+.breathing-timer {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   7. PREGUNTAS FRECUENTES (FAQ)
+   ========================================================================== */
+.faq-retro-section {
+  padding: 5rem 0;
+  background-color: #F4F1EA;
+}
+
+.faq-retro-container {
+  max-width: 780px;
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-cream-border);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  background: none;
+  cursor: pointer;
+}
+
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-periwinkle-light);
+  color: var(--color-periwinkle-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+  background-color: var(--color-periwinkle);
+  color: #FFFFFF;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.75rem;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 240px;
+  padding-bottom: 1.5rem;
+}
+
+.faq-answer p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   8. SECCIÓN WHATSAPP & HUB DE CONTACTO (100% WhatsApp, sin formularios)
+   ========================================================================== */
+.contact-hub-section {
+  padding: 6rem 0;
+  background-color: var(--color-cream);
+  text-align: center;
+}
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin: 3.5rem 0 3rem;
+  text-align: left;
+}
+
+.contact-card-retro {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-cream-border);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.contact-card-retro:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-periwinkle);
+}
+
+.contact-card-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-periwinkle-dark);
+  background-color: var(--color-periwinkle-light);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.contact-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 0.75rem;
+}
+
+.contact-card-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+/* Asistente Rápido de 1 Clic */
+.quick-builder-box {
+  background-color: #F4F1EA;
+  border-radius: var(--radius-xl);
+  padding: 2.75rem 2rem;
+  max-width: 840px;
+  margin: 0 auto;
+  border: 1px solid var(--color-cream-border);
+}
+
+.builder-controls {
+  display: flex;
+  gap: 1rem;
+  margin: 1.75rem 0 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.builder-input, .builder-select {
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid #D5CEBF;
+  background-color: #FFFFFF;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  outline: none;
+  transition: var(--transition);
+}
+
+.builder-input:focus, .builder-select:focus {
+  border-color: var(--color-periwinkle);
+  box-shadow: 0 0 0 3px rgba(148, 164, 200, 0.25);
+}
+
+.builder-trust {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   FOOTER (RETRO & TERAPÉUTICO)
+   ========================================================================== */
+.footer-retro {
+  background-color: #24352F;
+  color: #FFFFFF;
+  padding: 4.5rem 0 2.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+}
+
+.footer-col p {
+  color: #A3B7AE;
+  font-size: 0.925rem;
+  line-height: 1.7;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-col ul li, .footer-col ul li a {
+  color: #A3B7AE;
+  font-size: 0.925rem;
+  transition: var(--transition);
+}
+
+.footer-col ul li a:hover {
+  color: #FFFFFF;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #7D9289;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Floating WhatsApp Bubble */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.whatsapp-bubble {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-whatsapp);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.floating-whatsapp:hover .whatsapp-bubble {
+  transform: scale(1.1);
+}
+
+.whatsapp-tooltip {
+  background-color: #FFFFFF;
+  color: var(--color-text-main);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-cream-border);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: var(--transition);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.floating-whatsapp:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Toast */
+.toast-notice {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: var(--color-text-main);
+  color: #FFFFFF;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-notice.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MÓVILES & TABLETS)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .about-maeve-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .split-approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .split-image-col {
+    min-height: 320px;
+  }
+
+  .services-trio-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-sky-block {
+    min-height: 320px;
+    padding-top: 4.5rem;
+  }
+
+  .hero-wordmark {
+    font-size: 3rem;
+  }
+
+  .hero-oval-frame {
+    width: 210px;
+    margin-bottom: -90px;
+  }
+
+  .hero-sage-block {
+    padding-top: 7rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .split-content-col {
+    padding: 3rem 1.75rem;
+  }
+
+  .builder-controls {
+    flex-direction: column;
+  }
+
+  .builder-input, .builder-select, .builder-btn {
+    width: 100%;
+  }
+
+  .floating-whatsapp {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .whatsapp-tooltip {
+    display: none;
+  }
+}
